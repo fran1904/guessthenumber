@@ -39,10 +39,9 @@
 
 <script>
 // references
-let customInputEl = document.querySelector('#custom-user-input')
-let inputTrigger = document.getElementById('inputTrigger')
+const customInputEl = document.querySelector('#custom-user-input')
+const inputTrigger = document.getElementById('inputTrigger')
 let numOfRounds = document.querySelector('input[name=round-radios]:checked').value  
-let numOfCustomRounds = ""
 let roundCount = 0
 
 // Function: Gets value of clicked radio
@@ -68,10 +67,12 @@ let guessNumber = () => {
   if (inputTrigger.checked) {
     numOfRounds = customInputEl.value
   }
-  console.log(numOfRounds);
 }
 
-
+// function reset
+let reset = () => {
+  console.log('reset');
+}
 
 
 
