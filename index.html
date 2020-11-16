@@ -13,7 +13,7 @@
 <section id="roundsContainer">
 <p>in how many rounds can you guess the number</p>
 <form action="return false">
-<div id="roundsOutputElement">
+<div id="roundsOutputEl">
   <input type="radio" id="four" name="round-radios" value="4" checked>
   <label for="four">4</label><br>
   <input type="radio" id="five" name="round-radios" value="5" >
@@ -37,12 +37,21 @@
 <section id="resultContainer"></section>
 
 
+
+
+
+
+
+
+
 <script>
 // references
 const customInputEl = document.querySelector('#custom-user-input')
 const inputTrigger = document.getElementById('inputTrigger')
+const roundsOutputEl = document.getElementById('roundsOutputEl')
 let numOfRounds = document.querySelector('input[name=round-radios]:checked').value  
 let roundCount = 0
+let theAnswer = 0
 
 // Function: Gets value of clicked radio
 let getTargetValue = () => {
@@ -59,14 +68,25 @@ let toggleInputVis = () => {
   }
 }
 
-roundsOutputElement.addEventListener('click', getTargetValue) // get the radio value if the element is clicked
+roundsOutputEl.addEventListener('click', getTargetValue) // get the radio value if the element is clicked
 
 // Function: guess number
 let guessNumber = () => {
-  event.preventDefault()
-  if (inputTrigger.checked) {
-    numOfRounds = customInputEl.value
-  }
+
+      event.preventDefault()
+
+      
+
+      if (inputTrigger.checked) {
+        numOfRounds = customInputEl.value
+      }
+
+      roundCount++
+
+      roundsOutputEl.innerHTML = `${roundCount} / ${numOfRounds}`
+
+      theAnswer = Math.ceil(Math.random() * 100)
+      
 }
 
 // function reset
