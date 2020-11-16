@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Index</title>
+</head>
+<html>
+<body>
+
+
+<section id="roundsContainer">
+<p>in how many rounds can you guess the number</p>
+<form action="return false">
+<div id="roundsOutputElement">
+  <input type="radio" id="four" name="round-radios" value="4" checked>
+  <label for="four">4</label><br>
+  <input type="radio" id="five" name="round-radios" value="5" >
+  <label for="five">5</label><br>
+  <input type="radio" id="six" name="round-radios" value="6">
+  <label for="six">6</label><br>
+  <input type="radio" id="inputTrigger" name="round-radios" value="custom">
+  <label for="custom">custom</label>
+
+  <input type="number" id="custom-user-input" class="hide">
+</form>
+</div>
+</section>
+
+<section id="guessContainer">
+  <form action="return false">
+    <input type="number" id="user-guess">
+    <button onclick="guessNumber()">Guess</button>
+  </form>
+</section>
+<section id="resultContainer"></section>
+
+
+<script>
+// references
+let customInputEl = document.querySelector('#custom-user-input')
+let inputTrigger = document.getElementById('inputTrigger')
+let numOfRounds = document.querySelector('input[name=round-radios]:checked').value  
+let numOfCustomRounds = ""
+let roundCount = 0
+
+// Function: Gets value of clicked radio
+let getTargetValue = () => {
+   numOfRounds = event.target.value
+  if (numOfRounds == 'custom') {
+    toggleInputVis()
+  }
+}
+
+// Function: Show hidden input field 
+let toggleInputVis = () => {
+  if (inputTrigger.checked) {
+    customInputEl.classList.remove('hide')
+  }
+}
+
+roundsOutputElement.addEventListener('click', getTargetValue) // get the radio value if the element is clicked
+
+// Function: guess number
+let guessNumber = () => {
+  event.preventDefault()
+  if (inputTrigger.checked) {
+    numOfRounds = customInputEl.value
+  }
+  console.log(numOfRounds);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
