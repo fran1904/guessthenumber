@@ -30,83 +30,17 @@
 
 <section id="guessContainer">
   <form action="return false">
-    <input type="number" id="user-guess">
+    <input type="number" id="guess-input">
     <button onclick="guessNumber()">Guess</button>
   </form>
 </section>
-<section id="resultContainer"></section>
+<section id="res"></section>
 
 
 
 
 
 
-
-
-
-<script>
-// references
-const customInputEl = document.querySelector('#custom-user-input')
-const inputTrigger = document.getElementById('inputTrigger')
-const roundsOutputEl = document.getElementById('roundsOutputEl')
-let numOfRounds = document.querySelector('input[name=round-radios]:checked').value  
-let roundCount = 0
-let theAnswer = 0
-
-// Function: Gets value of clicked radio
-let getTargetValue = () => {
-   numOfRounds = event.target.value
-  if (numOfRounds == 'custom') {
-    toggleInputVis()
-  }
-}
-
-// Function: Show hidden input field 
-let toggleInputVis = () => {
-  if (inputTrigger.checked) {
-    customInputEl.classList.remove('hide')
-  }
-}
-
-roundsOutputEl.addEventListener('click', getTargetValue) // get the radio value if the element is clicked
-
-// Function: guess number
-let guessNumber = () => {
-
-      event.preventDefault()
-
-      
-
-      if (inputTrigger.checked) {
-        numOfRounds = customInputEl.value
-      }
-
-      roundCount++
-
-      roundsOutputEl.innerHTML = `${roundCount} / ${numOfRounds}`
-
-      theAnswer = Math.ceil(Math.random() * 100)
-      
-}
-
-// function reset
-let reset = () => {
-  console.log('reset');
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
