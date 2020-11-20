@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Index</title>
-</head>
-<html>
-<body>
-
-
-<section id="roundsContainer">
-<p>in how many rounds can you guess the number</p>
-<form action="return false">
-<div id="roundsOutputEl">
-  <input type="radio" id="four" name="round-radios" value="4" checked>
-  <label for="four">4</label><br>
-  <input type="radio" id="five" name="round-radios" value="5" >
-  <label for="five">5</label><br>
-  <input type="radio" id="six" name="round-radios" value="6">
-  <label for="six">6</label><br>
-  <input type="radio" id="inputTrigger" name="round-radios" value="custom">
-  <label for="custom">custom</label>
-
-  <input type="number" id="custom-user-input" class="hide">
-</form>
-</div>
-</section>
-
-<section id="guessContainer">
-  <form action="return false">
-    <input type="number" id="guess-input">
-    <button onclick="guessNumber()">Guess</button>
-  </form>
-</section>
-<section id="res"></section>
-
-
-
-
-
-
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="https://kit.fontawesome.com/08168b175b.js" crossorigin="anonymous"></script>
+        <title>Invasion of Zog</title>
+    </head>
+    <html>
+        <body onload="typeStartText()">
+            <main>
+                <!-- screen one -->
+                <section id="startContainer">
+                    <h1>Invasion of Zog</h1>
+                    <p id="startText"></p>
+                    <a href="#" class="btn to-screen2" onclick="showScreenTwo()">Choose level  <i class="fas fa-arrow-right"></i></a>
+                </section>
+                <!-- screen two -->
+                <section id="roundsContainer" class="hide">
+                    <h2>Select level <br />(# guesses):</h2>
+                    <form action="return false">
+                        <div id="roundsOutputEl">
+                            <input type="radio" id="four" name="round-radios" value="4" checked>
+                            <label for="four">4 - Mad Max</label><br>
+                            <input type="radio" id="five" name="round-radios" value="5" >
+                            <label for="five">5 - Master</label><br>
+                            <input type="radio" id="six" name="round-radios" value="6">
+                            <label for="six">6 - Pro</label><br>
+                            <input type="radio" id="inputTrigger" name="round-radios" value="custom">
+                            <label for="inputTrigger">x - Customize</label>
+                            <input type="number" id="custom-user-input" class="hide" placeholder="Enter # guesses here">
+                          </div>
+                    </form>
+                    
+                    <a href="#" class="btn start-game" onclick="startGame()">Start Game</a>
+                </section>
+                <!-- screen three -->
+                <section id="guessContainer" class="hide">
+                    <h3>Guess how many Battle-Cruisers in the invading fleet (1 to 100)</h3>
+                    <h1 id="roundsEl">Good Luck!</h1>
+                    <form action="return false">
+                        <input type="number" id="guess-input" placeholder="Enter your guess">
+                        <a class="guess" onclick="guessNumber()">Guess</a>
+                    </form>
+                    <div id="res">
+                        <small>AI Stocastics Console</small>
+                        <div id="resContent"></div>
+                    </div>
+                </section>
+                <!-- screen four -->
+                <section id="gameOver" class="hide">
+                    <h1 id="winLose">Game Over</h1>
+                    <p id="winLoseDesc"></p>
+                    <a href="#" class="play-again" onclick="reset()">Play Again</a>
+                </section>
+            </main>
+            <script src="assets/js/main.js"></script>
+        </body>
+    </html>

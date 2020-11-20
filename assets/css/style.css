@@ -1,4 +1,259 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Orbitron:wght@400;500;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button {
+  background-color: transparent;
+  color: inherit;
+  border-width: 0;
+  cursor: pointer;
+}
+
+input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input, textarea {
+  outline: none;
+}
+
+html {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+body {
+  padding: 50px 0;
+  color: white;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 5px;
+  line-height: 1.2;
+}
+
+h1, h2, h3 {
+  color: #ffee00;
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin-bottom: 16px;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+main {
+  background: url("../img/planets.svg") center center/100% no-repeat scroll;
+  width: 400px;
+  min-height: 691px;
+  margin: 0 auto;
+  border-radius: 30px;
+  padding: 30px;
+  position: relative;
+}
+
+a {
+  font-family: "Luckiest Guy", cursive;
+  line-height: 1.0;
+}
+
+.to-screen2, .start-game {
+  background: #f6ff00;
+  color: #7e356f;
+  font-size: 1.5rem;
+  line-height: 2;
+  min-width: 85%;
+  padding: .375rem .75rem;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 30px;
+  border: 4px solid #7e356f;
+  font-weight: 700;
+  -webkit-transition: color 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+  transition: color 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.to-screen2:hover, .start-game:hover {
+  background: rgba(246, 255, 0, 0.85);
+}
+
+#roundsOutputEl {
+  font-size: 1.5rem;
+}
+
+#roundsOutputEl input[type=radio] {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  margin-left: 10%;
+}
+
+#roundsOutputEl label {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+#custom-user-input, #guess-input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1.2rem;
+  text-align: center;
+  background: transparent;
+  color: white;
+}
+
+#custom-user-input::-webkit-input-placeholder, #guess-input::-webkit-input-placeholder {
+  color: white;
+}
+
+#custom-user-input:-ms-input-placeholder, #guess-input:-ms-input-placeholder {
+  color: white;
+}
+
+#custom-user-input::-ms-input-placeholder, #guess-input::-ms-input-placeholder {
+  color: white;
+}
+
+#custom-user-input::placeholder, #guess-input::placeholder {
+  color: white;
+}
+
+h1#roundsEl {
+  color: white;
+  font-size: 4rem;
+}
+
+.guess {
+  background: #f6ff00;
+  color: #7e356f;
+  font-size: 1.5rem;
+  line-height: 2;
+  min-width: 85%;
+  padding: .375rem .75rem;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 20px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 30px;
+  border: 4px solid #7e356f;
+  font-weight: 700;
+  -webkit-transition: color 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+  transition: color 0.5s ease, background-color 0.5s ease, border-color 0.5s ease;
+  position: static;
+  border-radius: 8px;
+  width: 100%;
+  border: none;
+}
+
+.guess:hover {
+  background: rgba(246, 255, 0, 0.85);
+}
+
+#guess-input {
+  height: 57px;
+  margin-bottom: 16px;
+}
+
+a.guess {
+  margin-bottom: 75px;
+}
+
+div#res {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 6px;
+  height: 155px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+div#res #resContent p {
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+}
+
+#gameOver {
+  margin-top: 177px;
+}
+
+.play-again {
+  display: block;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+}
+
 .hide {
-  display: none;
+  display: none !important;
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    background: white;
+  }
+  body {
+    padding: 0;
+  }
+  main {
+    width: 100%;
+    border-radius: 0;
+    background-position: center top;
+  }
 }
 /*# sourceMappingURL=style.css.map */

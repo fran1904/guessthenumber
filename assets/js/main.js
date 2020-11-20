@@ -1,30 +1,48 @@
-// guessNumber()has to:
-// // roundCount++
-// replace the contents of div#roundsOutputElement with `${roundCount} / ${numOfRounds}`
-// generate a random number between 1 and 100. Store in var theAnswer
-// Store the user input from #user-guess in var userGuess
-// if theAnswer == userGuess, output `Yes! You got me in ${roundCount} guesses! I'm ${userGuess}. <a href="#" onclick="reset()">You win! Play again?`</a>.
-//if theAnswer > userGuess, output `${roundCount} - You need to guess higher than ${userGuess}`.
-// else output `${roundCount} - You need to guess lower than ${userGuess}.`
-// On win: disable input field
-// show radios again
-
-// ######################################################
-// Still ToDo:
-
-
 // references
+let i = 0;
+let a = 0;
+let b = 0;
+let startText =
+  "Planet Earth stands shortly before an an alien invasion...                               A fleet of Zogonian Battle-Cruisers is headed toward Earth.                               As commander of Earth's forces, only YOU can save the human race.                               Your first task is to discover how many alien ships are in the enemy fleet.                               Time is short...";
+
+const startContainer = document.getElementById("startContainer");
 const customInputEl = document.querySelector("#custom-user-input");
 const inputTrigger = document.getElementById("inputTrigger");
 const roundsOutputEl = document.getElementById("roundsOutputEl");
-let guessInput = document.getElementById("guess-input");
+const guessInput = document.getElementById("guess-input");
+const roundsEl = document.getElementById("roundsEl");
 const resultEl = document.getElementById("res");
+const resContent = document.getElementById("resContent");
+const gameOver = document.getElementById("gameOver");
+const winLose = document.getElementById("winLose");
+const winLoseDesc = document.getElementById("winLoseDesc");
 let numOfRounds = parseInt(
   document.querySelector("input[name=round-radios]:checked").value
 );
 let roundCount = 0;
 let theAnswer = 0;
 let userGuess = 0;
+
+// Function: Types startText to screen
+let typeStartText = () => {
+  if (i < startText.length) {
+    document.getElementById("startText").innerHTML += startText.charAt(i);
+    i++;
+    setTimeout(typeStartText, 30);
+  }
+};
+
+// Function: hide screen one, show screen two
+let showScreenTwo = () => {
+  startContainer.classList.add("hide");
+  roundsContainer.classList.remove("hide");
+};
+
+// Function: show screen three (start game)
+let startGame = () => {
+  roundsContainer.classList.add("hide");
+  guessContainer.classList.remove("hide");
+};
 
 // Function: Gets value of clicked radio
 let getTargetValue = () => {
@@ -41,10 +59,22 @@ let toggleInputVis = () => {
   }
 };
 
+// Show screen four - game over
+let showGameOver = () => {
+  guessContainer.classList.add("hide");
+  gameOver.classList.remove("hide");
+};
+
+// function reset
+let reset = () => {
+  location.reload();
+};
+
 roundsOutputEl.addEventListener("click", getTargetValue); // get the radio value if the element is clicked
 
 theAnswer = Math.ceil(Math.random() * 100);
-console.log(theAnswer);
+
+roundsEl.innerHTML = `<i class="fas fa-user-astronaut"></i>`;
 
 // Function: guess number
 let guessNumber = () => {
@@ -53,25 +83,20 @@ let guessNumber = () => {
     numOfRounds = parseInt(customInputEl.value);
   }
   roundCount++;
-  roundsOutputEl.innerHTML = `${roundCount} / ${numOfRounds}`;
-
+  roundsEl.innerHTML = `${roundCount} / ${numOfRounds}`;
   userGuess = parseInt(guessInput.value);
 
   if (theAnswer == userGuess) {
-    resultEl.innerHTML += `<p>${roundCount} - Yes! You got me in ${roundCount} guesses! You win! Number ${userGuess}. <a href="#" onclick="reset()"> Play again?</a></p>`;
-    guessInput.disabled = true;
+    showGameOver();
+    winLose.innerHTML = "You Win!";
+    winLoseDesc.innerHTML = `Congratulations! The invading fleet has ${userGuess} Battle Cruisers! Now you can prepare your defenses!`;
   } else if (numOfRounds <= roundCount) {
-    document.write("GAME OVER");
+    showGameOver();
   } else if (theAnswer > userGuess) {
-    resultEl.innerHTML += `<p>${roundCount} - You need to guess higher than ${userGuess}.</p>`;
+    resContent.innerHTML += `<p>${roundCount} - There are more Battle Cruisers than ${userGuess}.</p>`;
   } else if (theAnswer < userGuess) {
-    resultEl.innerHTML += `<p>${roundCount} - You need to guess lower than ${userGuess}.</p>`;
+    resContent.innerHTML += `<p>${roundCount} - There are less Battle Cruisers than ${userGuess}.</p>`;
   }
   guessInput.value = "";
   guessInput.focus();
-};
-
-// function reset
-let reset = () => {
-  location.reload();
 };
